@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>행 열 갯수 각각 입력받아 테이블 만들기</h1>
+    <p>
+        힌트 : 반복문은 자바랑 같습니다. 다만! 변수만 var 데이터행이라는 걸 기억해주세요<br>
+        document.write()를 이용하여 표를 출력하면 됩니다!
+    </p>
+    <br>
+    <div id="area" class="area"></div>
+    <button onclick="input();">테이블 생성</button>
+    <script>
+        function input(){
+            var row =  Number(window.prompt("행의 갯수 입력"));
+            var col = Number(window.prompt("열의 갯수 입력"));
+            var num = 1;
+            document.write("<table border = "+1+">");
+            for(var i=0;i<row;i++){
+                document.write("<tr>");
+                for(var j=0;j<col;j++){
+                    document.write("<td>"+num+"</td>");
+                    num++;
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
+        }
+    </script>
+</body>
+</html>
