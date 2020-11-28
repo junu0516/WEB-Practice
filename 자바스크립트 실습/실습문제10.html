@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        legend{
+            color: red;
+        }
+        #print{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체실습문제</h1>
+    <p>
+        문제1.<br>
+        다음 입력 버튼을 클릭하면 이름, 나이, 주소를 prompt로 입력받은 후,<br>
+        입력받은 정보를 member 객체에 저장.<br>
+        이후 출력 버튼 클릭시 member 객체 내의 정보를 출력창에 출력되도록 할 것<br>
+        (단, 입력받지 않은 상태에서 출력버튼 클릭시 입력하라는 알림을 띄울 것)<br>
+        ex)<br>
+         이름 : ㅇㅇㅇ<br>
+         나이 : ㅇㅇ세<br>
+        주소 : XXX XXX XXXX...
+    </p>
+    <fieldset>
+        <legend>출력창</legend>
+        <div id="print"></div>
+    </fieldset><br>
+    <button onclick="insertMember();">입력</button>
+    <button onclick="printMember();">출력</button>
+    <script>
+        var member;
+        function insertMember(){
+            var name = prompt("이름 입력");
+            var age = prompt("나이 입력");
+            var address = prompt("주소 입력");
+
+            member = {
+                name : name,
+                age : age,
+                address : address,
+                toString : function(){
+                    return "이름 : "+name+"<br> 나이 : "+age+"<br> 주소 : "+address+"<br>";
+                }
+            }
+        }
+        function printMember(){
+            if(member==null){
+                alert("정보를 입력하세요");
+            }else{
+                var flag = true;
+                for(var key in member){
+                    if(member[key]==""||member[key]==null){
+                        flag = false;
+                    }
+                }
+                if(flag){
+                    document.getElementById("print").innerHTML = member.toString();
+                }else{
+                    alert("값이 제대로 입력되지 않았습니다.");
+                }
+                member = null;
+            }
+        }
+    </script>
+
+</body>
+</html>
