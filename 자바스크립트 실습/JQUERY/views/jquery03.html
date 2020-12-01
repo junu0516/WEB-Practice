@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력양식 필터 선택자1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>입력 양식 필터 선택자</h1>
+    <p>input 태그의 type속성에 따라 문서 객체 선택 가능</p>
+    <label>텍스트 상자</label><input type="text"><br>
+    <label>버튼 : </label><input type="button" onclick="fun1();"><br>
+    <label>체크박스 : </label><input type="checkbox"><br>
+    <label>파일 : </label><input type="file"><br>
+    <br>
+    <label>이미지 : </label><input type="image" src="../image/flower2.PNG"><br>
+    <br>
+    <label>패스워드 : </label><input type="password"><br>
+    <label>라디오버튼 : </label><input type="radio"><br>
+    <label>리셋버튼 : </label><input type="reset"><br>
+    <label>전송버튼 : </label><input type="submit" id="but" onclick="fun1();"><br>	
+    <script>
+        $(function(){
+            $("input:text").css("background","red");
+            $("input:button").attr("value","버튼").css({"width":"200px","height":"100px"});
+            $("input:checkbox").attr("checked","true");
+        });
+        $(function(){
+            $("input:submit").css({"background":"purple","color":"white"});
+        });
+        var but = document.getElementById("but");
+        function fun1(){
+            console.log("제출");
+        }
+    </script>
+</body>
+</html>

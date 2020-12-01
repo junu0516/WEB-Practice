@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필터링 메소드</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>필터링 메소드</h1>
+    <h3>filtering 메소드의 사용법</h3>
+    <p>선택자로 지정한 객체를 기주능로 필터를 사용해서 문서의 객체를 선택</p>
+    <h4 class="test">test-1</h4>
+    <h4 class="test">test-2</h4>
+    <h4 class="test">test-3</h4>
+    <h4 class="test">test-4</h4>
+    <h4>test-5</h4>
+    <h4 class="test">test-6</h4>
+    <script>
+        $(function(){
+            //짝수번째 배경색과 컬러 변경 .... 0부터 시작
+            $("h4:even").css("background","black").css("color","white");
+        });
+
+        //혹은 $("h4").filter(":even").css();로도 가능
+
+        //홀수번째 filter로 변경
+        $("h4").filter(function(index){
+            return index%2 == 1;
+        }).css({"background":"yellowgreen","color":"black"});
+
+        //첫번째 요소 선택해서 폰트 크기 늘리기
+        $("h4").first().css("font-size","30px");
+
+        //마지막 요소 선택해서 폰트 크기 늘리기, 내용 바꾸기
+        $("h4:last").css("font-size","30px").text("마지막요소"); //혹은 .lasT() 사용해도 무방
+
+        //특정 인덱스넘버와 일치하는 요소만 리턴
+        $("h4").eq(3).text("세번째 선택해봄");
+
+        //인자값과 일치하는 요소만 리턴
+        $("h4").not(".test").css({"background":"yellow","color":"black"});
+    </script>
+
+</body>
+</html>
