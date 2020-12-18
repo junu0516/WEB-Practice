@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>순회(탐색)메소드 - sideways</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .wrap, .wrap * {
+            border:1px solid lightgray;
+            display:block;
+            padding: 5px;
+            margin:15px;
+            color:gray;
+        }
+    </style>
+<body>
+    <h1>순회(탐색)메소드</h1>
+    <h3>sideways 메소드</h3>
+    <div class="wrap">div(parent)
+        <p>p</p>
+        <span>span</span>
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <p>p</p>
+    </div>
+    <script>
+        $(function(){
+            //받은 인자와 동등한 레벨에 있는 요소들의 속성을 변경
+            $("h2").siblings().css({"color":"red","border":"1px solid red"});
+            //동등한 레벨에 있는 특정 요소를 선택
+            $("h2").siblings("span").css({"color":"blue","border":"1px solid blue"});
+            //선택된 요소의 다음 레벨 요소의 속성을 변경
+            $("h2").next().css({"color":"green","border":"2px solid green"});
+            //선택된 요소 다음 모든 요소의 속성을 변경
+            $("h2").nextAll().css({"font-size":"2em"});
+            //선택된 요소 다음부터, 인자로 받은 요소 직전까지 요소들의 속성을 변경
+            $("h2").nextUntil("p").css({"border":"dashed"});
+            //선택된 요소 이전 요소
+            $("h2").prev().css({"background":"yellow"});
+            //선택된 요소 이전 모든 요소
+            $("h2").prevAll().css({"background":"cyan"});
+            //선택된 요소 이전 모든 인자들 중 인자로 받은 요소 직전까지 요소들의 속성 변경
+            $("h2").prevUntil("p").css({"border":"dashed"});
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+    src="http://code.jquery.com/color/jquery.color-2.2.0.js"
+    integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg="
+    crossorigin="anonymous"></script>
+    <title>effect 메소드</title>
+    <style>
+        .test1{
+            width: 200px;
+            height: 200px;
+            background : orangered;
+        }
+        .test2{
+            width: 200px;
+            height: 200px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1>Effect 메소드</h1>
+    <p>
+        페이지에 애니메이션 효과를 만들기 위한 메소드 집합
+    </p>
+    <h3>animate() 메소드</h3>
+    <div id="test1" class="test1"></div>
+    <button id="btn1">animation 적용</button>
+    <script>
+        //$().메소드명([speed],[easing],[callback]);
+        //speed : 실행속도(밀리세컨초) / 숫자 or slow,fast
+        //easing : 변경되는 지점별 속도 3000->3
+        //callback : 메소드 실행 후 실행할 함수
+        //color 속성은 지원하지 않아서 따로 해당 플러그인을 import 한다.
+        $(function(){
+            $("#btn1").click(function(){
+                $("#test1").animate({width : "500px", backgroundColor:"blue"},1000,function(){
+                    alert("애니메이션 적용완료"); //컬러 변경은 해당 jquery 스크립트 따로 적용해서 구현하도록 함
+                });
+            });
+        });
+    </script>
+</body>
+</html>

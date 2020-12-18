@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>순회(탐색) 메소드2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .wrap * {
+            border:1px solid lightgray;
+            display:block;
+            padding: 5px;
+            margin:15px;
+            color:gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>순회(탐색) 메소드</h1>
+	<h3>Ancestors 메소드</h3>
+	<p>선택된 요소의 상위 요소들을 선택할 수 있는 메소드</p>
+	<div class="wrap">
+  		<div style="width:500px;">div (great-grandparent)
+    		<ul>ul (grandparent)  
+      			<li>li (direct parent)
+      				<span>span</span>
+      			</li>
+    		</ul>   
+  		</div>
+
+  		<div style="width:500px;">div (grandparent)
+    		<p>p (direct parent)
+    			<span>span</span>
+    		</p> 
+  		</div> 
+    </div>
+    <script>
+        $(function(){
+            //선택한 요소의 바로 다음 자손의 속성을 변경
+            $(".wrap").children().css({"color":"red","border":"2px solid red"}); 
+            //.children() 추가하면 자식의 자식이 되는 것
+            $(".wrap").children().children("ul").css({"color":"blue","border":"2px solid blue"});
+            //인자로 받은 값과 일치하는 모든 후손 객체를 가리킴
+            $(".wrap").find("span").css({"color":"yellowgreen","border":"2px solid yellowgreen"});
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메소드2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>    
+        .first{color:red}
+        .second{color:pink}
+        .third{color:orange}
+    </style>
+</head>
+<body>
+    <h3>attr() 메소드</h3>
+    <p>
+        문서 객체의 특정 속성값을 알아내거나 속성값을 추가할 때 사용함.
+    </p>
+    <img src="../image/flower1.PNG" width="400px" height="300px">
+    <script>
+        $(function(){
+            var img = $("img").attr("src");
+            console.log("사진 경로 : "+img);
+            //속성명에 해당하는 속성값을 변경
+            $("img").attr("src","../image/flower2.PNG");
+            console.log("바뀐 사진 경로 : "+img);
+            //함수를 통해 인덱스와 value를 활용
+            $("img").attr("src",function(index,value){
+                console.log(index,value);
+            });
+
+            var width = $("img").attr("width");
+            var height = $("img").attr("height");
+
+            $("img").attr("width","100px");
+            $("img").attr("height","50px");
+            //$("img").attr({"width":"100px","height":"50px"});
+            $("img").removeAttr("width").removeAttr("height"); //removeAttr로 되돌리기
+        });
+    </script>
+    <hr>
+    <h3>css() 메소드</h3>
+    <p>문서객체의 스타일을 검사하거나 변경할 때 사용</p>
+    <h1 class="first">test-0</h1>
+    <h1 class="second">test-1</h1>
+    <h1 class="third">test-2</h1>
+    <script>
+        $(function(){
+            //속성명에 해당하는 속성값을 리턴
+            console.log($(".first").css("color"));
+            //속성명에 해당하는 속성값을 변경
+            $(".first").css("color","black");
+            $(".first").css("color",function(index,value){
+                console.log(index,value);
+            });
+
+            //3em, backgroundcolor orange
+            $(".first").css("font-size","3em").css("background","orange");
+        });
+    </script>
+</body>
+</html>

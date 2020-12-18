@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #test2{
+            width: 300px;
+            height: 300px;
+            background: orangered;
+        }
+        #test3{
+            width: 300px;
+            height: 300px;
+            background: orangered;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <h3>이벤트 관련 속성</h3>
+    <button onclick="test1(event)">실행확인</button>
+    <script>
+        function test1(event){
+            console.log(event); //매개변수로 받은 event가 뭔지 콘솔에서 확인하기
+        }
+    </script>
+    <hr>
+    <h3>이벤트 연결 종류</h3>
+    <h4>
+        bind() : 현재 존재하는 문서 객체만 이벤트 연결<br>
+        unbind() : bind()로 연결된 이벤트 제거
+    </h4>
+    <h1 id="test1">마우스를 올려보세요</h1>
+    <h1 id="practice1">마우스를 올려보세요</h1>
+
+    <script>
+       
+        $(function(){
+            $("#practice1").bind("mouseenter",function(){
+                $(this).css({"background":"red","color":"white"});
+            }).bind("mouseleave",function(){
+                $(this).css({"background":"white","color":"black"});
+            })
+
+            $("#test1").bind("mouseenter",function(){ //bind(이벤트타입, 실행시킬 함수)
+                $(this).css({"background":"black","color":"white"});
+            }).bind("mouseleave",function(){
+                $(this).css({"background":"white","color":"black"});
+            });
+        });
+
+        $("#test1").bind("click",function(){ //클릭하면 더 이상 이벤트 발생 안하도록 처리해보기
+            $(this).unbind("mouseenter").unbind("mouseleave").css({"background":"white","color":"black"});
+        })
+    </script>
+    <hr>
+    <h4>
+        on() : bind() 대신에 on()으로 대체 .... on()을 보통 더 많이 씀
+        <br>off() : on()으로 연결된 이벤트 제거<br>
+        <h3>실험</h3>
+    </h4>
+    <div id="test2">기본상태</div>
+    <script>
+        $(function(){
+            $("#test2").on({'mouseenter' : function(){
+                $(this).css("background","yellowgreen").text("마우스 올라감");
+            },"mouseleave":function(){
+                $(this).css("background","yellow").text("마우스 내려감");
+            },"click":function(){
+                $(this).off("mouseenter").off("mouseleave").css("background","white").text("기본값");
+            }
+            });
+
+            $("h3").text("바뀐거 확인");
+        });
+    </script>
+    <br>
+    <div id="test3">기본상태</div>
+    <script>
+        $(function(){//이벤트 연결시 데이터 전달
+            $("#test3").on("click",{name:'유재석'},function(event){//매개변수 event 입력해야 function에 이벤트 연결
+                alert(event.data.name+"님 환영합니다.");//event 데이터에서 name 속성 가져옴
+            });
+        })
+    </script>
+    <div id="wrap">
+        <h2>Header</h2>
+    </div>
+    <script>
+        $(function(){
+            //바로 아래처럼 하면 새로 생성된 h2에는 이벤트가 걸리지 않음
+            //$("h2").on("click",function(){
+                //아래처럼 해야 추가된 h2를 클릭해도 동일한 이벤트가 적용됨
+                $(document).on("click","h2",function(){
+                $("#wrap").append("<h2>Header</h2>");
+            });
+        });
+    </script>
+    <hr>
+    <h3>
+        이벤트 한 번만 연결해도 되는 경우<br>
+        one() 메소드
+    </h3>
+    <h1 id="test4">클릭하세요</h1>
+    <script>
+        $(function(){
+            $("#test4").one("click",function(){
+                alert("이벤트 발생"); //한번만 실행되고 더 이상 실행 안됨
+            });
+        });
+    </script>
+    
+</body>
+</html>
