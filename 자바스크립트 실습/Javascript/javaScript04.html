@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수와 자료형 활용하기</title>
+    <script>
+        /*전역변수를 선언과 동시에 초기화*/
+        str = "전역변수"; /*자동으로 windwo 객체의 필드로 잡힘*/
+        var str2 = "var 전역변수"; /*특정 함수 외부에서는 var을 붙여도 전역변수*/
+        window.onload = function()/*익명함수*/{
+            var str = "지역변수";
+            var str3 = "새로운 지역변수";
+            str4 = "난 뭘까요?" /*특정 함수 내에서 var을 붙이지 않으면 전역변수*/
+            console.log("-----str 호출-----");
+            console.log(str); /*지역변수*/
+            console.log(this.str);
+            console.log(window.str);
+            console.log(str2); /*자동으로 전역변수 탐색(str2 중 지역변수가 없기 때문)*/
+            console.log(str3);
+            console.log(str4);
+            console.log("-----this로 지역변수 호출-----");
+            console.log(this.str2);
+            console.log(this.str3);/*undefined*/
+            console.log(this.str4);
+            console.log("-----window로 지역변수 호출-----");
+            console.log(window.str3);
+            console.log(window.str3);
+            console.log(window.str4);
+        } /*페이지 로드 후 익명함수 실행*/
+    </script>
+    <style>
+        .area{
+            border: 1px solid black;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>변수와 자료형</h1>
+	<h3>변수 선언</h3>
+    <pre>
+        &lt;script&gt;
+            변수명;         // 전역 변수 (global)
+
+            var 변수명;     // 전역 변수 (global)
+
+            function 함수명(){
+                변수명;     // 전역 변수 (global)
+
+                var 변수명; // 지역 변수 (local)
+            }
+        &lt;/script&gt;
+    </pre>
+	<p>지역변수 :함수 내부에서 var 변수명;으로 선언<br>
+	   전역변수: 함수 내부에서  변수명; 함수 밖에서 변수명; 혹은 var 변수명;으로 선언.<br>
+		지역변수와 전역변수가 같은 이름인 경우 함수 내부에서 변수명을 호출하면 지역변수가 우선권을 가지기 때문에<br>
+		전역변수 사용 시 window.변수명 혹은 this.변수명 으로 표현하여 지역변수와 구분한다<br>
+		전역변수는 해당 window내에서 어디에서든 사용할 수 있으며, 지역변수는 해당 함수에서만 사용 가능하다.</p>
+
+	<h3>[참고] window객체</h3>
+    <p>브라우저에서 제공하는 브라우저창(window)에 대한 정보를 담고있는 객체</p>
+    
+    <h3>자료형</h3>
+    <p>자바 스크립트에서 자료형별로 변수 타입이 지정되지 않고 리터럴에 의해 자료형이 결정됨</p>
+    <button onclick="testType();">자료형 테스트</button>
+    <br>
+    <div id="area1" class="area"></div>
+    <script>
+        function testType(){
+            console.log("-----각 변수 타입 알아보기-----");
+            //문자열변수
+            var name = "유재석";
+            console.log(name);
+            console.log(typeof(name));
+
+            //숫자변수
+            var age = 20;
+            console.log(age);
+            console.log(typeof(age));
+
+            //논리변수
+            var check = true;
+
+            //배열변수
+            var hobby = ["축구", "농구", "야구"];
+
+            //객체변수
+            var user = {
+                name : "유재석",
+                age : 20,
+                id : "user01"
+            };
+            console.log(user);
+            console.log(typeof(user));
+            //함수 변수
+            var testFunction = function testFunction(num1, num2){
+                var sum = num1 + num2;
+            }
+            console.log(testFunction);
+            console.log(typeof(testFunction));
+            //정의 되지 않은 변수
+            var apple;
+            console.log(apple);
+            console.log(typeof(apple));
+
+            var area1 = document.getElementById("area1");
+            area1.innerHTML += "문자열 변수 : "+name+"<br>";
+            area1.innerHTML += "숫자 변수 : "+age+"<br>";
+            area1.innerHTML += "논리 변수 : "+check+"<br>";
+            area1.innerHTML += "배열 변수 : "+hobby+"<br>";
+            area1.innerHTML += "배열인덱스[0] 변수 : "+hobby[0]+"<br>";
+            area1.innerHTML += "객체 변수 : "+user+"<br>";
+            area1.innerHTML += "객체 속성 접근 : "+user.name+"<br>";
+            area1.innerHTML += "함수 : "+testFunction+"<br>";
+            area1.innerHTML += "정의되지 않은 변수 : "+apple+"<br>";
+        }
+    </script>
+    <h3>동적 타입 테스트</h3>
+    <button onclick="testDynamicType();">실행확인</button>
+    <script>
+        function testDynamicType(){
+            var testVar = 123;
+            console.log(typeof(testVar)+" : "+testVar);
+            testVar = "안녕하세요";
+            console.log(typeof(testVar)+" : "+testVar);
+        }
+    </script>
+</body>
+</html>

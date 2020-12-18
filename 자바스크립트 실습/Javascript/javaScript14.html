@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체관련 키워드</title>
+    <style>
+        .area{
+            height: 130px;
+            background : lightgray;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체 관련 키워드</h1>
+    <h3>instanceof 키워드</h3>
+    <p>A instanceof B : A 는 B의 한 종류</p>
+    <button onclick="test1();">실행확인</button>
+    <div id="area1" class="area"></div>
+    <script>
+        function Dog(name){
+            this.name = name;
+        }
+        function test1(){
+            var myDog = new Dog('콩이');
+            area1.innerHTML += "myDog instanceof Dog :"+(myDog instanceof Dog)+"<br>";
+            area1.innerHTML += "myDog instanceof Object :"+(myDog instanceof Object)+"<br>";
+            area1.innerHTML += "myDog instanceof Number :"+(myDog instanceof Number)+"<br>";
+            area1.innerHTML += "myDog instanceof String :"+(myDog instanceof String)+"<br>";
+            area1.innerHTML += "myDog instanceof Boolean :"+(myDog instanceof Boolean)+"<br>";
+
+            area1.innerHTML += "myDog name is "+myDog.name + myDog['name']+"<br>";
+        }
+    </script>
+    <h3>캡슐화와 상속</h3>
+    <h3>캡슐화</h3>
+    <p>
+        생성자 함수에서 속성 정의시<br>
+        this.키워드를 사용하지 않고 지역변수로 선언할 경우<br>
+        캡슐화된 객체의 속성은 직접 접근할 수 없으므로<br>
+        간접적으로 접근할 수 있도록 getter/setter 메소드를 정의해서 사용
+    </p>
+    <button onclick="test3();">확인</button>
+    <div id="area3" class="area"></div>
+    <script>
+        function Fruit(fname, fcolor, forigin){
+            var name = fname;
+            var color = fcolor;
+            var origin = forigin;
+
+            this.getName = function(){
+                return name;
+            }
+            this.setName = function(fname){
+                name = fname;
+            }
+            this.getColor = function(){
+                return color;
+            }
+            this.setColor = function(fcolor){
+                color = fcolor;
+            }
+            this.getOrigin = function(){
+                return origin;
+            }
+            this.setOrigin = function(forigin){
+                origin = forigin
+            }
+        }
+
+        function test3(){
+            var fname = '사과';
+            var fcolor = "red";
+            var forigin = "daegu";
+
+            var fruit1 = new Fruit(fname, fcolor, forigin);
+            console.log(fruit1);
+            console.log(fruit1.getName());
+            console.log(fruit1.getColor());
+            console.log(fruit1.getOrigin());
+
+            fruit1.setName('배');
+            console.log(fruit1.getName());
+            with(fruit1){
+                area3.innerHTML += "과일 이름 : "+getName()+"<br>";
+                area3.innerHTML += "과일 색 : "+getColor()+"<br>";
+                area3.innerHTML += "원산지 : "+getOrigin()+"<br>";
+            }
+        }
+    </script>
+    <h3>상속</h3>
+    <p>
+        하나의 객체를 만들 때 직접 모든 내용을 만드는 것이 아니라<br>
+        부모로부터 존재하는 값을 기본으로 가지고 시작할 수 있도록<br>
+        코드의 재사용성을 고려한 것이 상속<br>
+        자바와는 달리 프로토타입을 통해 상속을 구현하는 것
+    </p>
+    <h3>프로토 타입</h3>
+    <p>
+        자바 스크립트에서 객체와 객체를 연결하여 속성, 메소드를 공유하는 것을 일컫음<br>
+        프로토타입은 크게 두가지로 이루어져 있음<br>        
+        --> _proto_ 속성은 모든 객체가 빠짐없이 가지고 있는 속성이고,<br> 
+        상위객체로부터 물려받은 프로토 타입 정보(Prototype Object를 가리킴)를 말함<br>
+        --> prototype(Prototype Object) : 하위객체로 물려줄 프로토 타입 정보, 즉 현재 객체의 정보<br>
+        --> 객체의 _proto_와 생성자 함수의 프로토타입 객체의 참조관계를 prototype link라고 부름.
+    </p>
+    <button onclick="test4();">실행확인</button>
+    <script>
+        function Book(t,a,p,d){
+            var title = t;
+            var author = a;
+            var price = p;
+            var discountRate = d;
+            //캡슐화
+            this.getTitle = function(){
+                return title;
+            }
+            this.getAuthor = function(){
+                return author;
+            }
+            this.getPrice = function(){
+                return price;
+            }
+            this.getDiscountRate = function(){
+                return discountRate;
+            }
+
+            //getter, setter
+            this.setTitle = function(t){
+                title = t;
+            }
+            this.setAuthor = function(a){
+                author = a;
+            }
+            this.setPrice = function(p){
+                if(p<=0){
+                    throw new Error('가격은 0보다 커야합니다.');
+                }else{
+                    price = p;
+                }
+            }
+            this.setDiscountRate = function(d){
+                if(d<0){
+                    throw new Error('할인율은 0보다 커야합니다.');
+                }else{
+                    discountRate = d;
+                }
+            }
+
+            Book.prototype.getSellerPrice = function(){
+                return this.getPrice()-(this.getPrice()*this.getDiscountRate());
+            }
+        }
+
+        function test4(){
+            try{
+                var myBook = new Book('언어의 온도','이기주',10000,0.1);
+                myBook.setPrice(-1000);
+                console.log(myBook);
+            }catch(e){
+                alert(e.message);
+                return false; //return false 안하면 그 다음 구문을 수행하게 됨
+            }
+            alert("title : "+myBook.getTitle()+"\n"+"author : "+myBook.getAuthor()+"\n"+"판매가 : "+myBook.getSellerPrice());
+        }
+    </script>
+    <h3>상속 확인하기</h3>
+    <button onclick="test5();">실행확인</button>
+    <script>
+        function Novel(t,a,p,d,tp){
+            //상속을 위한 부모를 선정
+            this.parent = Book; //class Novel extends Book 과 같은 개념으로 보도록 하자
+            //가져온 Book 생성자 함수를 호출하여 객체를 생성
+            this.parent(t,a,p,d);//super()과 같은 개념으로 보도록 하자
+            var type = tp;
+
+            this.getType = function(){
+                return type;
+            }
+            this.setType = function(tp){
+                type = tp;
+            }
+        }
+
+        console.log(Book.prototype);
+        Novel.prototype = Book.prototype;
+        console.log(Novel.prototype);
+
+        function test5(){
+            var novel1 = new Novel(
+                '고양이',
+                '베르나르 베르베르',
+                15000,
+                0.1,
+                '소설');
+            console.log(novel1);
+            alert("title : "+novel1.getTitle()+"\n"+"author : "+novel1.getAuthor()+"\n"+"판매가 : "+novel1.getSellerPrice()+"\n"+"타입 : "+novel1.getType());
+            
+        }
+    </script>
+
+</body>
+</html>
