@@ -13,6 +13,11 @@
 * [내장함수](https://github.com/junu0516/WEB-Practice/blob/main/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%8B%A4%EC%8A%B5/Javascript/javaScript11.html) : 인코딩/디코딩 관련 내장함수, eval 함수(String으로 입력된 계산식대로 계산한 결과 반환) 활용   
 * [객체](https://github.com/junu0516/WEB-Practice/blob/main/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%8B%A4%EC%8A%B5/Javascript/javaScript12.html) : 객체 선언 및 호출, 식별자, 메소드 호출, 반복문, in/with 키워드 활용   
 * [객체배열](https://github.com/junu0516/WEB-Practice/blob/main/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%8B%A4%EC%8A%B5/Javascript/javaScript13.html) : 객체배열 선언, 생성자 함수(키워드로 객체를 생성하는 함수)  
-
+* [객체관련 키워드](https://github.com/junu0516/WEB-Practice/blob/main/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%8B%A4%EC%8A%B5/Javascript/javaScript14.html) : instanceof, 캡슐화와 상속, 프로토 타입  
+* [내장객체](https://github.com/junu0516/WEB-Practice/blob/main/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%8B%A4%EC%8A%B5/Javascript/javaScript15.html) : object, constructor() 메소드(객체 생성자 및 자료형 검사), Number, String, Date   
+* [window 객체](https://github.com/junu0516/WEB-Practice/blob/main/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%8B%A4%EC%8A%B5/Javascript/javaScript16.html) : window, window 객체의 timer 관련 메소드, setInterval(), sceen 객체, location 객체, navigator 객체, geolocation 객체
+* [DOM 객체](https://github.com/junu0516/WEB-Practice/blob/main/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%8B%A4%EC%8A%B5/Javascript/javaScript17.html) : DOM(Document Objecdt Model), innerHTML, 스타일 지정
+* [이벤트](https://github.com/junu0516/WEB-Practice/blob/main/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%8B%A4%EC%8A%B5/Javascript/javaScript18.html) : 인라인&표준 이벤트 모델, 태그에 존재하는 기본 이벤트 제거(submit, a)
+* [정규표현식](https://github.com/junu0516/WEB-Practice/blob/main/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%8B%A4%EC%8A%B5/Javascript/javaScript19.html) : 정규표현식 활용
     
 ## 2. JQuery 연습
